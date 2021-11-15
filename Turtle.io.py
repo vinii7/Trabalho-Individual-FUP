@@ -41,7 +41,7 @@ borda.hideturtle()
 borda.penup()
 borda.setpos(-230, -230)
 borda.pendown()
-borda.pensize(3)
+borda.pensize(5)
 for lado in range(4):
     borda.fd(455)
     borda.lt(90)
@@ -146,6 +146,7 @@ while True:
         # Tempo e sair
         sleep(4)
         exit()
+
     # Fronteira
     if tartaruga.ycor() > 205:
         tartaruga.sety(205)
