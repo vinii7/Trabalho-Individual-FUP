@@ -4,7 +4,6 @@
 
 # Importar modulos
 import turtle
-import math
 import pygame
 from turtle import *
 from random import randint
@@ -18,6 +17,8 @@ display.setup(500, 500)
 display.tracer(0)
 
 # Score e HP
+ponto = 0
+vida = 3
 letra = turtle.Turtle()
 letra.speed(0)
 letra.color('black')
@@ -56,7 +57,6 @@ tartaruga.penup()
 tartaruga.shapesize(stretch_wid=2.5, stretch_len=2.5)
 
 # Alga
-ponto = 0
 alga = turtle.Turtle()
 register_shape('Alga.gif')
 alga.shape('Alga.gif')
@@ -66,7 +66,6 @@ alga.goto(randint(-190, 190), randint(-190, 190))
 
 
 # Garrafa
-vida = 3
 garrafa = turtle.Turtle()
 register_shape('Garrafa.gif')
 garrafa.shape('Garrafa.gif')
@@ -104,13 +103,11 @@ onkeypress(l, 'Left')
 # Função colisão
 
 
-def colisão(t1, t2):
-    distancia = math.sqrt(math.pow(t1.xcor()-t2.xcor(), 2) +
-                          math.pow(t1.ycor()-t2.ycor(), 2))
+def colisão(o1, o2):
+    distancia = o1.distance(o2)
+
     if distancia < 50:
         return True
-    else:
-        return False
 
 
 # Musica
@@ -130,11 +127,7 @@ while True:
         pygame.mixer.music.stop()
 
         # Game over
-        gameover = turtle.Turtle()
-        letra.speed(0)
         letra.color('white')
-        letra.penup()
-        letra.hideturtle()
         letra.goto(5, -40)
         letra.write('GAMEOVER', align='center',
                     font=('Early GameBoy', 40, 'normal'))
